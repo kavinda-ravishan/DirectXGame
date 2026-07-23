@@ -2,9 +2,7 @@
 #include "DX3D/Window/Window.h"
 
 dx3d::Game::Game() {
-	_display = new Window();
+	_window = std::make_unique<Window>();
 }
 
-dx3d::Game::~Game() {
-	delete _display;
-}
+dx3d::Game::~Game() {}

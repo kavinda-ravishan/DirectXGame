@@ -11,7 +11,7 @@ namespace dx3d {
 
 		virtual void Run() final;
 	private:
-		Window* _display{ nullptr };
+		std::unique_ptr<Window> _window{ nullptr };
 		bool _is_running{ true };
 	};
 

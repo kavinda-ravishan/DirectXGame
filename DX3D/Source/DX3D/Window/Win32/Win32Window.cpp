@@ -38,7 +38,7 @@ dx3d::Window::Window(const WindowDesc& desc): Base(desc.base) {
 	RECT rc = { 0, 0, 1280, 720 };
 	AdjustWindowRect(&rc, window_style, false);
 
-	_handle = CreateWindowEx(
+	_win_handle = CreateWindowEx(
 		NULL, 
 		MAKEINTATOM(window_class_id), 
 		L"C++ 3D Game", 
@@ -52,16 +52,16 @@ dx3d::Window::Window(const WindowDesc& desc): Base(desc.base) {
 		NULL, 
 		NULL);
 
-	if (nullptr == _handle) {
+	if (nullptr == _win_handle) {
 		GetLogger().Log(Logger::LogLevel::Error, "Failed to create window");
 		throw std::runtime_error("Failed to create window");
 	}
 
-	ShowWindow(static_cast<HWND>(_handle), SW_SHOW);
+	ShowWindow(static_cast<HWND>(_win_handle), SW_SHOW);
 }
 
 dx3d::Window::~Window() {
 	GetLogger().Log(Logger::LogLevel::Info, "Destroying Window");
 
-	DestroyWindow(static_cast<HWND>(_handle));
+	DestroyWindow(static_cast<HWND>(_win_handle));
 }

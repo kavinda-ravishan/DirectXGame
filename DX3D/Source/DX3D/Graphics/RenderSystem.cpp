@@ -1,6 +1,7 @@
 #include "DX3D/Graphics/RenderSystem.h"
 
-dx3d::RenderSystem::RenderSystem() {
+dx3d::RenderSystem::RenderSystem(const RenderSystemDesc& desc) : Base(desc.base) {
+	GetLogger().Log(Logger::LogLevel::Info, "Initializing Render System");
 
 	D3D_FEATURE_LEVEL feature_level{};
 	UINT create_device_flags{};
@@ -23,8 +24,11 @@ dx3d::RenderSystem::RenderSystem() {
 	);
 
 	if (FAILED(hr)) {
+		GetLogger().Log(Logger::LogLevel::Error, "Failed to create D3D11 device and context");
 		throw std::runtime_error("Failed to create D3D11 device and context.");
 	}
 }
 
-dx3d::RenderSystem::~RenderSystem() {}
+dx3d::RenderSystem::~RenderSystem() {
+	GetLogger().Log(Logger::LogLevel::Info, "Destroying Render System");
+}

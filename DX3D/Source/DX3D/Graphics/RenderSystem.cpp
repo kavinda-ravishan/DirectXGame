@@ -1,5 +1,8 @@
 #include "DX3D/Graphics/RenderSystem.h"
 #include "DX3D/Graphics/GraphicsLogUtils.h"
+#include "DX3D/Graphics/SwapChain.h"
+
+using namespace dx3d;
 
 dx3d::RenderSystem::RenderSystem(const RenderSystemDesc& desc) : Base(desc.base) {
 	DX3DLogInfo("Initializing Render System");
@@ -25,8 +28,32 @@ dx3d::RenderSystem::RenderSystem(const RenderSystemDesc& desc) : Base(desc.base)
 			&_d3d_context // Device context pointer
 	), "Failed to create D3D11 device and context");
 
+	// Get pointer to DXGI device interface from D3D11 device
+	DX3DGraphicsLogErrorAndThrow(
+		_d3d_device->QueryInterface(IID_PPV_ARGS(&_dxgi_device)), 
+		"Failed to get DXGI device from D3D11 device"
+	);
+
+	DX3DGraphicsLogErrorAndThrow(
+		_dxgi_device->GetParent(IID_PPV_ARGS(&_dxgi_adapter)), 
+		"Failed to get DXGI adapter from DXGI device"
+	);
+
+	DX3DGraphicsLogErrorAndThrow(
+		_dxgi_adapter->GetParent(IID_PPV_ARGS(&_dxgi_factory)),
+		"Failed to get DXGI factory from DXGI adapter"
+	);
+
 }
 
 dx3d::RenderSystem::~RenderSystem() {
 	DX3DLogInfo("Destroying Render System");
+}
+
+SwapChainPtr dx3d::RenderSystem::CreateSwapChain(const SwapChainDesc& desc) const {
+	return std::make_shared<SwapChain>(desc, GetGraphicsResourceDesc());
+}
+
+GraphicsResourceDesc dx3d::RenderSystem::GetGraphicsResourceDesc() const noexcept {
+	return { {_logger}, shared_from_this(), *_d3d_device.Get(), *_dxgi_factory.Get()};
 }

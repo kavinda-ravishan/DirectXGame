@@ -14,7 +14,7 @@ namespace dx3d {
 		// and graphics engine must be destroyed after window
 		std::unique_ptr<Logger> _logger_ptr{ nullptr };
 		std::unique_ptr<GraphicsEngine> _graphics_engine{ nullptr };
-		std::unique_ptr<Window> _window{ nullptr };
+		std::unique_ptr<Display> _display{ nullptr };
 		bool _is_running{ true };
 	};
 

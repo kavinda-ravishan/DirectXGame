@@ -11,6 +11,8 @@ namespace dx3d {
 
 		explicit Logger(LogLevel log_level = LogLevel::Error);
 
+		~Logger();
+
 		void Log(LogLevel level, const char* message) const;
 
 	private:

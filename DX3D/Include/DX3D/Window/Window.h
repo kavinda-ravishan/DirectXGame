@@ -7,8 +7,9 @@ namespace dx3d {
 	public:
 		explicit Window(const WindowDesc& desc);
 		virtual ~Window() override;
-	private:
+	protected:
 		void* _win_handle{ nullptr };
+		Rect _win_size{};
 	};
 
 } // namespace dx3d

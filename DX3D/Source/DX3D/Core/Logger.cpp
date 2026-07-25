@@ -8,6 +8,11 @@ dx3d::Logger::Logger(LogLevel log_level) : _log_level(log_level) {
 	std::clog << "----------------------------------------\n";
 }
 
+dx3d::Logger::~Logger() {
+
+	std::clog << "----------------------------------------\n";
+}
+
 void dx3d::Logger::Log(LogLevel level, const char* message) const{
 
 	auto LogLevel2String = [](LogLevel log_level) -> const char* {

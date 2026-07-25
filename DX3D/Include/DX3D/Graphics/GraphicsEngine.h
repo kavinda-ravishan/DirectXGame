@@ -6,7 +6,9 @@ namespace dx3d{
 	public:
 		explicit GraphicsEngine(const GraphicsEngineDesc& desc);
 		virtual ~GraphicsEngine() override;
+
+		RenderSystem& GetRenderSystem() const noexcept;
 	private:
-		std::unique_ptr<RenderSystem> _render_system{};
+		std::shared_ptr<RenderSystem> _render_system{};
 	};
 } // namespace dx3d

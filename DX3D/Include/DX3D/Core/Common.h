@@ -1,6 +1,7 @@
 #pragma once
 #include <DX3D/Core/Core.h>
 #include <DX3D/Core/Logger.h>
+#include <DX3D/Math/Rect.h>
 
 namespace dx3d {
 
@@ -11,6 +12,12 @@ namespace dx3d {
 
 	struct WindowDesc {
 		BaseDesc base;
+		Rect size{};
+	};
+
+	struct DisplayDesc {
+		WindowDesc window;
+		RenderSystem& render_system;
 	};
 
 	struct GraphicsEngineDesc {
@@ -21,7 +28,13 @@ namespace dx3d {
 		BaseDesc base;
 	};
 
+	struct SwapChainDesc {
+		void* win_handle{};
+		Rect win_size{};
+	};
+
 	struct GameDesc {
+		Rect window_size{ 1280, 720 };
 		Logger::LogLevel log_level = Logger::LogLevel::Error;
 	};
 

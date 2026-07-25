@@ -14,7 +14,7 @@ static LRESULT CALLBACK WindowProcedure(HWND hwnd, UINT msg, WPARAM wparam, LPAR
 	return 0;
 }
 
-dx3d::Window::Window(const WindowDesc& desc): Base(desc.base) {
+dx3d::Window::Window(const WindowDesc& desc): Base(desc.base), _win_size(desc.size) {
 	
 	DX3DLogInfo("Initializing Window");
 
@@ -34,7 +34,7 @@ dx3d::Window::Window(const WindowDesc& desc): Base(desc.base) {
 
 	const DWORD window_style = WS_OVERLAPPED | WS_CAPTION | WS_SYSMENU;
 
-	RECT rc = { 0, 0, 1280, 720 };
+	RECT rc = { 0, 0, _win_size.width, _win_size.height };
 	AdjustWindowRect(&rc, window_style, false);
 
 	_win_handle = CreateWindowEx(

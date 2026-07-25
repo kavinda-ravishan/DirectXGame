@@ -1,6 +1,6 @@
 #include "DX3D/Core/Logger.h"
 #include "DX3D/Game/Game.h"
-#include "DX3D/Window/Window.h"
+#include "DX3D/Game/Display.h"
 #include "DX3D/Graphics/GraphicsEngine.h"
 
 dx3d::Game::Game(const GameDesc& desc) 
@@ -12,7 +12,7 @@ dx3d::Game::Game(const GameDesc& desc)
 	_logger_ptr(&_logger)
 {
 	_graphics_engine = std::make_unique<GraphicsEngine>(GraphicsEngineDesc({_logger}));
-	_window = std::make_unique<Window>(WindowDesc({_logger}));
+	_display = std::make_unique<Display>(DisplayDesc({_logger, desc.window_size, _graphics_engine->GetRenderSystem()}));
 
 	DX3DLogInfo("Game initialized successfully.");
 }

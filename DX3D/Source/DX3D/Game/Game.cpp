@@ -14,9 +14,9 @@ dx3d::Game::Game(const GameDesc& desc)
 	_graphics_engine = std::make_unique<GraphicsEngine>(GraphicsEngineDesc({_logger}));
 	_window = std::make_unique<Window>(WindowDesc({_logger}));
 
-	_logger_ptr->Log(Logger::LogLevel::Info, "Game initialized successfully.");
+	DX3DLogInfo("Game initialized successfully.");
 }
 
 dx3d::Game::~Game() {
-	_logger_ptr->Log(Logger::LogLevel::Info, "Starting game destruction.");
+	DX3DLogInfo("Starting game destruction.");
 }

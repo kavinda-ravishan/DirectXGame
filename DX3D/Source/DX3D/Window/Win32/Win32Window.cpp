@@ -16,7 +16,7 @@ static LRESULT CALLBACK WindowProcedure(HWND hwnd, UINT msg, WPARAM wparam, LPAR
 
 dx3d::Window::Window(const WindowDesc& desc): Base(desc.base) {
 	
-	GetLogger().Log(Logger::LogLevel::Info, "Initializing Window");
+	DX3DLogInfo("Initializing Window");
 
 	auto RegisterWindowClass = []() {
 		WNDCLASSEX wc{};
@@ -28,9 +28,8 @@ dx3d::Window::Window(const WindowDesc& desc): Base(desc.base) {
 	
 	static const auto window_class_id = std::invoke(RegisterWindowClass);
 
-	if (window_class_id == 0) {
-		GetLogger().Log(Logger::LogLevel::Error, "Failed to register window class");
-		throw std::runtime_error("Failed to register window class");
+	if (0 == window_class_id) {
+		DX3DLogErrorAndThrow("Failed to register window class");
 	}
 
 	const DWORD window_style = WS_OVERLAPPED | WS_CAPTION | WS_SYSMENU;
@@ -53,15 +52,14 @@ dx3d::Window::Window(const WindowDesc& desc): Base(desc.base) {
 		NULL);
 
 	if (nullptr == _win_handle) {
-		GetLogger().Log(Logger::LogLevel::Error, "Failed to create window");
-		throw std::runtime_error("Failed to create window");
+		DX3DLogErrorAndThrow("Failed to create window");
 	}
 
 	ShowWindow(static_cast<HWND>(_win_handle), SW_SHOW);
 }
 
 dx3d::Window::~Window() {
-	GetLogger().Log(Logger::LogLevel::Info, "Destroying Window");
+	DX3DLogInfo("Destroying Window");
 
 	DestroyWindow(static_cast<HWND>(_win_handle));
 }

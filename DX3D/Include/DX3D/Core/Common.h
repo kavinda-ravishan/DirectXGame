@@ -4,7 +4,7 @@
 
 namespace dx3d {
 
-	// struct for dependency injection design pattern with dependency aggregation
+	// struct for dependency injection pattern with dependency aggregation strategy
 	struct BaseDesc {
 		Logger& logger;
 	};

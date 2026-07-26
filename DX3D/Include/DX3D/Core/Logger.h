@@ -13,7 +13,7 @@ namespace dx3d {
 
 		~Logger();
 
-		void Log(LogLevel level, const char* message) const;
+		void Log(LogLevel level, const char* message);
 
 	protected:
 		Logger(const Logger&) = delete; // delete copy constructor

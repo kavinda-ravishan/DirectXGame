@@ -17,6 +17,6 @@ void dx3d::Game::Run() {
 			DispatchMessage(&msg);
 		}
 
-		Sleep(1);
+		OnInternalUpdate();
 	}
 }

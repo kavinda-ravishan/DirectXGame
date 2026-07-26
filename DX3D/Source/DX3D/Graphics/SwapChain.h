@@ -7,10 +7,16 @@ class SwapChain final : public GraphicsResource {
 
 public:
 	SwapChain(const SwapChainDesc& desc, const GraphicsResourceDesc& g_desc);
+	void Present(bool vsync = false);
 
-	~SwapChain();
 private:
-	Microsoft::WRL::ComPtr<IDXGISwapChain> _swap_chain{ nullptr };
+	void ReloadBuffers();
+
+private:
+	Microsoft::WRL::ComPtr<IDXGISwapChain> _swap_chain{};
+	Microsoft::WRL::ComPtr<ID3D11RenderTargetView> _render_target_view{};
+
+	friend class DeviceContext;
 };
 
 } // namespace dx3d

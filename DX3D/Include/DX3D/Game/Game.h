@@ -9,13 +9,17 @@ namespace dx3d {
 		virtual ~Game() override;
 
 		virtual void Run() final;
+
+	private:
+		void OnInternalUpdate();
+
 	private:
 		// order of initialization is important here, graphics engine must be initialized before window
 		// and graphics engine must be destroyed after window.
 		// logger must initialized before all and destroyed after all.
-		std::unique_ptr<Logger> _logger_ptr{ nullptr };
-		std::unique_ptr<GraphicsEngine> _graphics_engine{ nullptr };
-		std::unique_ptr<Display> _display{ nullptr };
+		std::unique_ptr<Logger> _logger_ptr{};
+		std::unique_ptr<GraphicsEngine> _graphics_engine{};
+		std::unique_ptr<Display> _display{};
 		bool _is_running{ true };
 	};
 

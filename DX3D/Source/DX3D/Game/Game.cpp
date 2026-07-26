@@ -20,3 +20,7 @@ dx3d::Game::Game(const GameDesc& desc)
 dx3d::Game::~Game() {
 	DX3DLogInfo("Game is shutting down...");
 }
+
+void dx3d::Game::OnInternalUpdate() {
+	_graphics_engine->Render(_display->GetSwapChain());
+}

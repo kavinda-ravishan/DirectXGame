@@ -1,6 +1,7 @@
 #include "DX3D/Graphics/GraphicsDevice.h"
 #include "DX3D/Graphics/GraphicsLogUtils.h"
 #include "DX3D/Graphics/SwapChain.h"
+#include "DX3D/Graphics/DeviceContext.h"
 
 using namespace dx3d;
 
@@ -52,6 +53,22 @@ dx3d::GraphicsDevice::~GraphicsDevice() {
 
 SwapChainPtr dx3d::GraphicsDevice::CreateSwapChain(const SwapChainDesc& desc) const {
 	return std::make_shared<SwapChain>(desc, GetGraphicsResourceDesc());
+}
+
+DeviceContextPtr dx3d::GraphicsDevice::CreateDeviceContext() {
+	return std::make_shared<DeviceContext>(GetGraphicsResourceDesc());
+}
+
+void dx3d::GraphicsDevice::ExecuteCommandList(DeviceContext& context) {
+
+	Microsoft::WRL::ComPtr<ID3D11CommandList> command_list{};
+
+	DX3DGraphicsLogThrowOnFail(
+		context._context->FinishCommandList(false, &command_list),
+		"Failed to get command list"
+	);
+
+	_d3d_context->ExecuteCommandList(command_list.Get(), false);
 }
 
 GraphicsResourceDesc dx3d::GraphicsDevice::GetGraphicsResourceDesc() const noexcept {

@@ -1,9 +1,6 @@
 #include "DX3D/Graphics/SwapChain.h"
 
 dx3d::SwapChain::SwapChain(const SwapChainDesc& desc, const GraphicsResourceDesc& g_desc) : GraphicsResource(g_desc) {
-
-	DX3DLogInfo("Creating SwapChain...");
-
 	DXGI_SWAP_CHAIN_DESC dxgi_desc {};
 
 	dxgi_desc.BufferDesc.Width = std::max(1, desc.win_size.width);
@@ -21,8 +18,27 @@ dx3d::SwapChain::SwapChain(const SwapChainDesc& desc, const GraphicsResourceDesc
 		_factory.CreateSwapChain(&_device, &dxgi_desc, &_swap_chain),
 		"Failed to create swap chain."
 	);
+
+	ReloadBuffers();
 }
 
-dx3d::SwapChain::~SwapChain() {
-	DX3DLogInfo("Destroying Swap Chain")
+void dx3d::SwapChain::Present(bool vsync) {
+	DX3DGraphicsLogThrowOnFail(
+		_swap_chain->Present(vsync, 0),
+		"Failed the Present call"
+	);
+}
+
+void dx3d::SwapChain::ReloadBuffers() {
+
+	Microsoft::WRL::ComPtr<ID3D11Texture2D> buffer{};
+	DX3DGraphicsLogThrowOnFail(
+		_swap_chain->GetBuffer(0, IID_PPV_ARGS(&buffer)),
+		"Failed to get buffer from the swap chain."
+	);
+
+	DX3DGraphicsLogThrowOnFail(
+		_device.CreateRenderTargetView(buffer.Get(), nullptr, &_render_target_view),
+		"Failed to create render target view from buffer."
+	);
 }

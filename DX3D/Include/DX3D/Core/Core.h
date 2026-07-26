@@ -14,6 +14,7 @@ namespace dx3d {
 	class GraphicsEngine;
 	class GraphicsDevice;
 	class SwapChain;
+	class DeviceContext;
 
 	class Logger;
 
@@ -24,5 +25,6 @@ namespace dx3d {
 	using d64 = double;
 
 	using SwapChainPtr = std::shared_ptr<SwapChain>;
+	using DeviceContextPtr = std::shared_ptr<DeviceContext>;
 
 } // namespace dx3d

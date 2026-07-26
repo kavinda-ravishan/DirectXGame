@@ -8,7 +8,7 @@ namespace dx3d {
 		explicit Base(const BaseDesc& desc);
 		virtual ~Base();
 
-		virtual Logger& GetLogger() const noexcept final;
+		virtual Logger& GetLogger() noexcept final;
 
 	protected:
 		Base(const Base&) = delete; // delete copy constructor

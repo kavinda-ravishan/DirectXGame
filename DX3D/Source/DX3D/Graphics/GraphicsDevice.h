@@ -11,7 +11,9 @@ namespace dx3d {
 		virtual ~GraphicsDevice() override;
 
 		SwapChainPtr CreateSwapChain(const SwapChainDesc& desc) const;
+		DeviceContextPtr CreateDeviceContext();
 
+		void ExecuteCommandList(DeviceContext& context);
 	private:
 		GraphicsResourceDesc GetGraphicsResourceDesc() const noexcept;
 
@@ -29,10 +31,10 @@ namespace dx3d {
 			* IDXGIFactory - Manages adapters and creates swap chains
 			* 
 		**/
-		Microsoft::WRL::ComPtr<ID3D11Device> _d3d_device{ nullptr };
-		Microsoft::WRL::ComPtr<ID3D11DeviceContext> _d3d_context{ nullptr };
-		Microsoft::WRL::ComPtr<IDXGIDevice> _dxgi_device{ nullptr };
-		Microsoft::WRL::ComPtr<IDXGIAdapter> _dxgi_adapter{ nullptr };
-		Microsoft::WRL::ComPtr<IDXGIFactory> _dxgi_factory{ nullptr };
+		Microsoft::WRL::ComPtr<ID3D11Device> _d3d_device{};
+		Microsoft::WRL::ComPtr<ID3D11DeviceContext> _d3d_context{};
+		Microsoft::WRL::ComPtr<IDXGIDevice> _dxgi_device{};
+		Microsoft::WRL::ComPtr<IDXGIAdapter> _dxgi_adapter{};
+		Microsoft::WRL::ComPtr<IDXGIFactory> _dxgi_factory{};
 	};
 } // namespace dx3d

@@ -10,7 +10,7 @@ dx3d::SwapChain::SwapChain(const SwapChainDesc& desc, const GraphicsResourceDesc
 	dxgi_desc.BufferUsage = DXGI_USAGE_RENDER_TARGET_OUTPUT; // buffer will be used as render target
 
 	dxgi_desc.OutputWindow = static_cast<HWND>(desc.win_handle);
-	dxgi_desc.SampleDesc.Count = 1; // sample count for multisaple antialiasing, 1 means no multisampling
+	dxgi_desc.SampleDesc.Count = 1; // sample count for multisample antialiasing, 1 means no multisampling
 	dxgi_desc.SwapEffect = DXGI_SWAP_EFFECT_FLIP_DISCARD; // flip model, discard previous frame, more efficient than traditional blit model
 	dxgi_desc.Windowed = TRUE; // windowed mode
 

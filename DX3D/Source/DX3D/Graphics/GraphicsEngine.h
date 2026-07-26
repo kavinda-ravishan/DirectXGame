@@ -7,8 +7,8 @@ namespace dx3d{
 		explicit GraphicsEngine(const GraphicsEngineDesc& desc);
 		virtual ~GraphicsEngine() override;
 
-		RenderSystem& GetRenderSystem() const noexcept;
+		GraphicsDevice& GetGraphicsDevice() const noexcept;
 	private:
-		std::shared_ptr<RenderSystem> _render_system{};
+		std::shared_ptr<GraphicsDevice> _graphics_device{};
 	};
 } // namespace dx3d

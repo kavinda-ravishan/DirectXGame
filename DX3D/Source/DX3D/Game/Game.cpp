@@ -12,11 +12,11 @@ dx3d::Game::Game(const GameDesc& desc)
 	_logger_ptr(&_logger)
 {
 	_graphics_engine = std::make_unique<GraphicsEngine>(GraphicsEngineDesc({_logger}));
-	_display = std::make_unique<Display>(DisplayDesc({_logger, desc.window_size, _graphics_engine->GetRenderSystem()}));
+	_display = std::make_unique<Display>(DisplayDesc({_logger, desc.window_size, _graphics_engine->GetGraphicsDevice()}));
 
 	DX3DLogInfo("Game initialized successfully.");
 }
 
 dx3d::Game::~Game() {
-	DX3DLogInfo("Starting game destruction.");
+	DX3DLogInfo("Game is shutting down...");
 }

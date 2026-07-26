@@ -32,7 +32,7 @@ dx3d::Window::Window(const WindowDesc& desc): Base(desc.base), _win_size(desc.si
 		DX3DLogErrorAndThrow("Failed to register window class");
 	}
 
-	const DWORD window_style = WS_OVERLAPPED | WS_CAPTION | WS_SYSMENU;
+	constexpr DWORD window_style = WS_OVERLAPPED | WS_CAPTION | WS_SYSMENU;
 
 	RECT rc = { 0, 0, _win_size.width, _win_size.height };
 	AdjustWindowRect(&rc, window_style, false);

@@ -17,7 +17,7 @@ dx3d::SwapChain::SwapChain(const SwapChainDesc& desc, const GraphicsResourceDesc
 	dxgi_desc.SwapEffect = DXGI_SWAP_EFFECT_FLIP_DISCARD; // flip model, discard previous frame, more efficient than traditional blit model
 	dxgi_desc.Windowed = TRUE; // windowed mode
 
-	DX3DGraphicsLogErrorAndThrow(
+	DX3DGraphicsLogThrowOnFail(
 		_factory.CreateSwapChain(&_device, &dxgi_desc, &_swap_chain),
 		"Failed to create swap chain."
 	);

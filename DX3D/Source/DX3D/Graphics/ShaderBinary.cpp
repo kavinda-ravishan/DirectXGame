@@ -5,12 +5,12 @@
 
 dx3d::ShaderBinary::ShaderBinary(const ShaderCompileDesc& desc, const GraphicsResourceDesc& g_desc) : GraphicsResource(g_desc), _type(desc.shader_type) {
 
-	DX3DLogInfo(("Compiling '" + std::string(desc.shader_entry_ponit) + "' shader entry ponit code").c_str());
+	DX3DLogInfo(("Compiling '" + std::string(desc.shader_entry_point) + "' shader entry point code").c_str());
 
 	if (!desc.shader_source_name) DX3DLogThrowInvalidArg("No shader source name provided");
 	if (!desc.shader_source_code) DX3DLogThrowInvalidArg("No shader source code provided");
 	if (!desc.shader_source_code_size) DX3DLogThrowInvalidArg("No shader code size provided");
-	if (!desc.shader_entry_ponit) DX3DLogThrowInvalidArg("No shader entry point provided");
+	if (!desc.shader_entry_point) DX3DLogThrowInvalidArg("No shader entry point provided");
 
 	UINT compile_flags{};
 
@@ -27,7 +27,7 @@ dx3d::ShaderBinary::ShaderBinary(const ShaderCompileDesc& desc, const GraphicsRe
 			desc.shader_source_name,
 			nullptr,
 			nullptr,
-			desc.shader_entry_ponit,
+			desc.shader_entry_point,
 			dx3d::graphics_utils::GetShaderModelTarget(desc.shader_type),
 			compile_flags,
 			0,

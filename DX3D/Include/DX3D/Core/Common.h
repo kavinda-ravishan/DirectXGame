@@ -42,7 +42,7 @@ namespace dx3d {
 		const char* shader_source_name{};
 		const void* shader_source_code{};
 		size_t shader_source_code_size{};
-		const char* shader_entry_ponit{};
+		const char* shader_entry_point{};
 		ShaderType shader_type;
 	};
 

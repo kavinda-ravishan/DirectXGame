@@ -1,8 +1,8 @@
 #pragma once
 #include <wrl.h>
 #include <d3d11.h>
-#include "DX3D/Core/Base.h"
-#include "DX3D/Graphics/GraphicsResource.h"
+#include <DX3D/Core/Base.h>
+#include <DX3D/Graphics/GraphicsResource.h>
 
 namespace dx3d {
 	class GraphicsDevice final : public Base, public std::enable_shared_from_this<GraphicsDevice> {

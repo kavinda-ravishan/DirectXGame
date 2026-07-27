@@ -1,5 +1,5 @@
 #include <iostream>
-#include "DX3D/Core/Logger.h"
+#include <DX3D/Core/Logger.h>
 
 dx3d::Logger::Logger(LogLevel log_level) : _log_level(log_level) {
 

@@ -1,6 +1,6 @@
 #pragma once
-#include "DX3D/Graphics/GraphicsResource.h"
-#include "DX3D/Math/Vec4.h"
+#include <DX3D/Graphics/GraphicsResource.h>
+#include <DX3D/Math/Vec4.h>
 
 namespace dx3d {
 

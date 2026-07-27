@@ -1,5 +1,5 @@
 #include <iostream>
-#include "DX3D/All.h"
+#include <DX3D/All.h>
 
 int main() {
 

@@ -1,5 +1,5 @@
 #include <Windows.h>
-#include "DX3D/Game/Game.h"
+#include <DX3D/Game/Game.h>
 
 void dx3d::Game::Run() {
 

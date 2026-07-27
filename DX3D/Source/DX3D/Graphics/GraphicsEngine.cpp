@@ -1,7 +1,7 @@
-#include "DX3D/Graphics/GraphicsEngine.h"
-#include "DX3D/Graphics/GraphicsDevice.h"
-#include "DX3D/Graphics/DeviceContext.h"
-#include "DX3D/Graphics/SwapChain.h"
+#include <DX3D/Graphics/GraphicsEngine.h>
+#include <DX3D/Graphics/GraphicsDevice.h>
+#include <DX3D/Graphics/DeviceContext.h>
+#include <DX3D/Graphics/SwapChain.h>
 
 dx3d::GraphicsEngine::GraphicsEngine(const GraphicsEngineDesc& desc) : Base(desc.base) {
 	DX3DLogInfo("Initializing Graphics Engine");

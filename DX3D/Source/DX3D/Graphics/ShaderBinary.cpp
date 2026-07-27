@@ -1,7 +1,7 @@
 #include <d3dcompiler.h>
 #include <string>
-#include "DX3D/Graphics/ShaderBinary.h"
-#include "DX3D/Graphics/GraphicsUtils.h"
+#include <DX3D/Graphics/ShaderBinary.h>
+#include <DX3D/Graphics/GraphicsUtils.h>
 
 dx3d::ShaderBinary::ShaderBinary(const ShaderCompileDesc& desc, const GraphicsResourceDesc& g_desc) : GraphicsResource(g_desc) {
 

@@ -1,5 +1,5 @@
-#include "DX3D/Graphics/DeviceContext.h"
-#include "DX3D/Graphics/SwapChain.h"
+#include <DX3D/Graphics/DeviceContext.h>
+#include <DX3D/Graphics/SwapChain.h>
 
 dx3d::DeviceContext::DeviceContext(const GraphicsResourceDesc& gr_desc) : GraphicsResource(gr_desc) {
 

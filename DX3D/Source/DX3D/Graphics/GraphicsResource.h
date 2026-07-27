@@ -1,8 +1,8 @@
 #pragma once
 #include <wrl.h>
 #include <d3d11.h>
-#include "DX3D/Core/Base.h"
-#include "DX3D/Graphics/GraphicsLogUtils.h"
+#include <DX3D/Core/Base.h>
+#include <DX3D/Graphics/GraphicsLogUtils.h>
 
 namespace dx3d {
 	struct GraphicsResourceDesc {

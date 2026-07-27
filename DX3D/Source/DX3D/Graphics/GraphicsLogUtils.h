@@ -1,7 +1,7 @@
 #pragma once
 #include <d3d11.h>
-#include "DX3D/Core/Core.h"
-#include "DX3D/Core/Logger.h"
+#include <DX3D/Core/Core.h>
+#include <DX3D/Core/Logger.h>
 
 namespace dx3d {
 

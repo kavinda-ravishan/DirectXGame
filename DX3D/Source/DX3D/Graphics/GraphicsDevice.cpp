@@ -1,8 +1,8 @@
-#include "DX3D/Graphics/GraphicsDevice.h"
-#include "DX3D/Graphics/GraphicsLogUtils.h"
-#include "DX3D/Graphics/SwapChain.h"
-#include "DX3D/Graphics/DeviceContext.h"
-#include "DX3D/Graphics/ShaderBinary.h"
+#include <DX3D/Graphics/GraphicsDevice.h>
+#include <DX3D/Graphics/GraphicsLogUtils.h>
+#include <DX3D/Graphics/SwapChain.h>
+#include <DX3D/Graphics/DeviceContext.h>
+#include <DX3D/Graphics/ShaderBinary.h>
 
 dx3d::GraphicsDevice::GraphicsDevice(const GraphicsDeviceDesc& desc) : Base(desc.base) {
 	DX3DLogInfo("Initializing Graphics Device");

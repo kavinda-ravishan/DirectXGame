@@ -1,5 +1,5 @@
 #pragma once
-#include "DX3D/Window/Window.h"
+#include <DX3D/Window/Window.h>
 
 namespace dx3d {
 	class Display final : public Window {

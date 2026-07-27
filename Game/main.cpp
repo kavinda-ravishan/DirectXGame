@@ -9,6 +9,9 @@ int main() {
 	} catch (const std::runtime_error& e) {
 		std::cerr << "Runtime Exception: " << e.what() << std::endl;
 		return EXIT_FAILURE;
+	} catch (const std::invalid_argument& e) {
+		std::cerr << "Invalid Argument Exception: " << e.what() << std::endl;
+		return EXIT_FAILURE;
 	} catch (const std::exception& e) {
 		std::cerr << "Exception: " << e.what() << std::endl;
 		return EXIT_FAILURE;

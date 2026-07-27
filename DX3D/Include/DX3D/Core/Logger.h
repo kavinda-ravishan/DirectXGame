@@ -25,21 +25,13 @@ namespace dx3d {
 		const LogLevel _log_level{ LogLevel::Error };
 	};
 
-#define DX3DLogInfo(message) {\
-	GetLogger().Log((Logger::LogLevel::Info), message);\
-	}
-
-#define DX3DLogWarning(message) {\
-	GetLogger().Log((Logger::LogLevel::Warning), message);\
-	}
-
-#define DX3DLogError(message) {\
-	GetLogger().Log((Logger::LogLevel::Error), message);\
-	}
-
-#define DX3DLogErrorAndThrow(message) {\
-	DX3DLogError(message);\
-	throw std::runtime_error(message);\
-	}
-
 } // namespace dx3d
+
+#define DX3DLog(logger, type, message)\
+	logger.Log((type), message)
+
+#define DX3DLogThrow(logger, exception, type, message)\
+{\
+	DX3DLog(logger, type, message);\
+	throw exception(message);\
+}

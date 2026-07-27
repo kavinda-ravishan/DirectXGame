@@ -6,6 +6,8 @@
 
 namespace dx3d {
 
+	class Logger;
+
 	class Base;
 	class Window;
 	class Display;
@@ -15,9 +17,7 @@ namespace dx3d {
 	class GraphicsDevice;
 	class SwapChain;
 	class DeviceContext;
-
-	class Logger;
-
+	class ShaderBinary;
 
 	using i32 = std::int32_t;
 	using ui32 = std::uint32_t;
@@ -26,5 +26,6 @@ namespace dx3d {
 
 	using SwapChainPtr = std::shared_ptr<SwapChain>;
 	using DeviceContextPtr = std::shared_ptr<DeviceContext>;
+	using ShaderBinaryPtr = std::shared_ptr<ShaderBinary>;
 
 } // namespace dx3d

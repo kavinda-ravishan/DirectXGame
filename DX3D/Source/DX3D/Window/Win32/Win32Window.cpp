@@ -29,7 +29,7 @@ dx3d::Window::Window(const WindowDesc& desc): Base(desc.base), _win_size(desc.si
 	static const auto window_class_id = std::invoke(RegisterWindowClass);
 
 	if (0 == window_class_id) {
-		DX3DLogErrorAndThrow("Failed to register window class");
+		DX3DLogThrowError("Failed to register window class");
 	}
 
 	constexpr DWORD window_style = WS_OVERLAPPED | WS_CAPTION | WS_SYSMENU;
@@ -52,7 +52,7 @@ dx3d::Window::Window(const WindowDesc& desc): Base(desc.base), _win_size(desc.si
 		NULL);
 
 	if (nullptr == _win_handle) {
-		DX3DLogErrorAndThrow("Failed to create window");
+		DX3DLogThrowError("Failed to create window");
 	}
 
 	ShowWindow(static_cast<HWND>(_win_handle), SW_SHOW);

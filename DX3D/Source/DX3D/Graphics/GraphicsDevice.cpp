@@ -2,8 +2,7 @@
 #include "DX3D/Graphics/GraphicsLogUtils.h"
 #include "DX3D/Graphics/SwapChain.h"
 #include "DX3D/Graphics/DeviceContext.h"
-
-using namespace dx3d;
+#include "DX3D/Graphics/ShaderBinary.h"
 
 dx3d::GraphicsDevice::GraphicsDevice(const GraphicsDeviceDesc& desc) : Base(desc.base) {
 	DX3DLogInfo("Initializing Graphics Device");
@@ -51,12 +50,16 @@ dx3d::GraphicsDevice::~GraphicsDevice() {
 	DX3DLogInfo("Destroying Graphics Device");
 }
 
-SwapChainPtr dx3d::GraphicsDevice::CreateSwapChain(const SwapChainDesc& desc) const {
+dx3d::SwapChainPtr dx3d::GraphicsDevice::CreateSwapChain(const SwapChainDesc& desc) const {
 	return std::make_shared<SwapChain>(desc, GetGraphicsResourceDesc());
 }
 
-DeviceContextPtr dx3d::GraphicsDevice::CreateDeviceContext() {
+dx3d::DeviceContextPtr dx3d::GraphicsDevice::CreateDeviceContext() {
 	return std::make_shared<DeviceContext>(GetGraphicsResourceDesc());
+}
+
+dx3d::ShaderBinaryPtr dx3d::GraphicsDevice::CompileShader(const ShaderCompileDesc& desc) {
+	return std::make_shared<ShaderBinary>(desc, GetGraphicsResourceDesc());
 }
 
 void dx3d::GraphicsDevice::ExecuteCommandList(DeviceContext& context) {
@@ -71,6 +74,6 @@ void dx3d::GraphicsDevice::ExecuteCommandList(DeviceContext& context) {
 	_d3d_context->ExecuteCommandList(command_list.Get(), false);
 }
 
-GraphicsResourceDesc dx3d::GraphicsDevice::GetGraphicsResourceDesc() const noexcept {
+dx3d::GraphicsResourceDesc dx3d::GraphicsDevice::GetGraphicsResourceDesc() const noexcept {
 	return { {_logger}, shared_from_this(), *_d3d_device.Get(), *_dxgi_factory.Get()};
 }

@@ -33,6 +33,19 @@ namespace dx3d {
 		Rect win_size{};
 	};
 
+	enum class ShaderType {
+		VertexShader = 0,
+		PixelShader
+	};
+
+	struct ShaderCompileDesc {
+		const char* shader_source_name{};
+		const void* shader_source_code{};
+		size_t shader_source_code_size{};
+		const char* shader_entry_ponit{};
+		ShaderType shader_type;
+	};
+
 	struct GameDesc {
 		Rect window_size{ 1280, 720 };
 		Logger::LogLevel log_level = Logger::LogLevel::Error;

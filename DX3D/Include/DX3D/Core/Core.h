@@ -18,6 +18,7 @@ namespace dx3d {
 	class SwapChain;
 	class DeviceContext;
 	class ShaderBinary;
+	class GraphicsPipelineState;
 
 	using i32 = std::int32_t;
 	using ui32 = std::uint32_t;
@@ -27,5 +28,6 @@ namespace dx3d {
 	using SwapChainPtr = std::shared_ptr<SwapChain>;
 	using DeviceContextPtr = std::shared_ptr<DeviceContext>;
 	using ShaderBinaryPtr = std::shared_ptr<ShaderBinary>;
+	using GraphicsPipelineStatePtr = std::shared_ptr<GraphicsPipelineState>;
 
 } // namespace dx3d

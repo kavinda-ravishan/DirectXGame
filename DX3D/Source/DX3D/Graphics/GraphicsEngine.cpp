@@ -22,6 +22,8 @@ void PSMain() {}
 
 	auto vs = device.CompileShader({ shader_source_name, shader_source_code, shader_source_code_size, "VSMain", ShaderType::VertexShader });
 	auto ps = device.CompileShader({ shader_source_name, shader_source_code, shader_source_code_size, "PSMain", ShaderType::PixelShader });
+
+	_pipeline = device.CreateGraphicsPipelineState({ *vs, *ps });
 }
 
 dx3d::GraphicsEngine::~GraphicsEngine() {
@@ -39,6 +41,7 @@ void dx3d::GraphicsEngine::Render(SwapChain& swap_chain) {
 
 	// record commands to device context (draw RED)
 	context.ClearAndSetBackBuffer(swap_chain, { 1 /*RED*/, 0 /*GREEN*/, 0 /*BLUE*/, 1/*ALPHA*/ });
+	context.SetGraphicsPipelineState(*_pipeline);
 
 	auto& device = *_graphics_device;
 	device.ExecuteCommandList(context);

@@ -13,5 +13,6 @@ namespace dx3d{
 	private:
 		std::shared_ptr<GraphicsDevice> _graphics_device{};
 		DeviceContextPtr _device_context{};
+		GraphicsPipelineStatePtr _pipeline{};
 	};
 } // namespace dx3d

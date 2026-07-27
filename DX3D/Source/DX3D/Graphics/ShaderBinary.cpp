@@ -3,9 +3,9 @@
 #include <DX3D/Graphics/ShaderBinary.h>
 #include <DX3D/Graphics/GraphicsUtils.h>
 
-dx3d::ShaderBinary::ShaderBinary(const ShaderCompileDesc& desc, const GraphicsResourceDesc& g_desc) : GraphicsResource(g_desc) {
+dx3d::ShaderBinary::ShaderBinary(const ShaderCompileDesc& desc, const GraphicsResourceDesc& g_desc) : GraphicsResource(g_desc), _type(desc.shader_type) {
 
-	DX3DLogInfo(("Compiling " + std::string(desc.shader_entry_ponit) + " shader entry ponit code").c_str());
+	DX3DLogInfo(("Compiling '" + std::string(desc.shader_entry_ponit) + "' shader entry ponit code").c_str());
 
 	if (!desc.shader_source_name) DX3DLogThrowInvalidArg("No shader source name provided");
 	if (!desc.shader_source_code) DX3DLogThrowInvalidArg("No shader source code provided");
@@ -37,3 +37,13 @@ dx3d::ShaderBinary::ShaderBinary(const ShaderCompileDesc& desc, const GraphicsRe
 		error_blob.Get()
 	);
 }
+
+dx3d::ShaderBinaryData dx3d::ShaderBinary::GetData() const noexcept
+{
+	return {
+		_blob->GetBufferPointer(), 
+		_blob->GetBufferSize()
+	};
+}
+
+dx3d::ShaderType dx3d::ShaderBinary::GetType() const noexcept { return _type; }

@@ -46,6 +46,16 @@ namespace dx3d {
 		ShaderType shader_type;
 	};
 
+	struct GraphicsPipelineStateDesc {
+		const ShaderBinary& vs;
+		const ShaderBinary& ps;
+	};
+
+	struct ShaderBinaryData {
+		const void* data{};
+		size_t data_size{};
+	};
+
 	struct GameDesc {
 		Rect window_size{ 1280, 720 };
 		Logger::LogLevel log_level = Logger::LogLevel::Error;

@@ -3,6 +3,7 @@
 #include <DX3D/Graphics/SwapChain.h>
 #include <DX3D/Graphics/DeviceContext.h>
 #include <DX3D/Graphics/ShaderBinary.h>
+#include <DX3D/Graphics/GraphicsPipelineState.h>
 
 dx3d::GraphicsDevice::GraphicsDevice(const GraphicsDeviceDesc& desc) : Base(desc.base) {
 	DX3DLogInfo("Initializing Graphics Device");
@@ -60,6 +61,10 @@ dx3d::DeviceContextPtr dx3d::GraphicsDevice::CreateDeviceContext() {
 
 dx3d::ShaderBinaryPtr dx3d::GraphicsDevice::CompileShader(const ShaderCompileDesc& desc) {
 	return std::make_shared<ShaderBinary>(desc, GetGraphicsResourceDesc());
+}
+
+dx3d::GraphicsPipelineStatePtr dx3d::GraphicsDevice::CreateGraphicsPipelineState(const GraphicsPipelineStateDesc& desc) {
+	return std::make_shared<GraphicsPipelineState>(desc, GetGraphicsResourceDesc());
 }
 
 void dx3d::GraphicsDevice::ExecuteCommandList(DeviceContext& context) {

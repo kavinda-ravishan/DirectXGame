@@ -15,8 +15,6 @@ static LRESULT CALLBACK WindowProcedure(HWND hwnd, UINT msg, WPARAM wparam, LPAR
 }
 
 dx3d::Window::Window(const WindowDesc& desc): Base(desc.base), _win_size(desc.size) {
-	
-	DX3DLogInfo("Initializing Window");
 
 	auto RegisterWindowClass = []() {
 		WNDCLASSEX wc{};
@@ -59,7 +57,5 @@ dx3d::Window::Window(const WindowDesc& desc): Base(desc.base), _win_size(desc.si
 }
 
 dx3d::Window::~Window() {
-	DX3DLogInfo("Destroying Window");
-
 	DestroyWindow(static_cast<HWND>(_win_handle));
 }

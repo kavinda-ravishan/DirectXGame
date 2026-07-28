@@ -9,11 +9,11 @@ namespace dx3d {
 			Info,
 		};
 
-		explicit Logger(LogLevel log_level = LogLevel::Error);
+		explicit Logger(LogLevel level = LogLevel::Error);
 
 		~Logger();
 
-		void Log(LogLevel level, const char* message);
+		void Log(LogLevel level, const char* message, const char* file, const int line);
 
 	protected:
 		Logger(const Logger&) = delete; // delete copy constructor
@@ -22,13 +22,13 @@ namespace dx3d {
 		Logger& operator=(Logger&&) = delete; // delete move assignment operator
 
 	private:
-		const LogLevel _log_level{ LogLevel::Error };
+		const LogLevel _level{ LogLevel::Error };
 	};
 
 } // namespace dx3d
 
 #define DX3DLog(logger, type, message)\
-	logger.Log((type), message)
+	logger.Log((type), message, __FILE__, __LINE__)
 
 #define DX3DLogThrow(logger, exception, type, message)\
 {\

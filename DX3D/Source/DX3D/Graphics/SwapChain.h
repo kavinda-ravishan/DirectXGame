@@ -8,11 +8,14 @@ class SwapChain final : public GraphicsResource {
 public:
 	SwapChain(const SwapChainDesc& desc, const GraphicsResourceDesc& g_desc);
 	void Present(bool vsync = false);
+	Rect GetSize() const noexcept;
 
 private:
 	void ReloadBuffers();
 
 private:
+	const Rect _size{};
+
 	Microsoft::WRL::ComPtr<IDXGISwapChain> _swap_chain{};
 	Microsoft::WRL::ComPtr<ID3D11RenderTargetView> _render_target_view{};
 

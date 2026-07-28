@@ -1,6 +1,6 @@
 #include <DX3D/Graphics/SwapChain.h>
 
-dx3d::SwapChain::SwapChain(const SwapChainDesc& desc, const GraphicsResourceDesc& g_desc) : GraphicsResource(g_desc) {
+dx3d::SwapChain::SwapChain(const SwapChainDesc& desc, const GraphicsResourceDesc& g_desc) : GraphicsResource(g_desc), _size(desc.win_size) {
 	
 	if (!desc.win_handle) DX3DLogThrowInvalidArg("No window handle provided");
 	
@@ -30,6 +30,10 @@ void dx3d::SwapChain::Present(bool vsync) {
 		_swap_chain->Present(vsync, 0),
 		"Failed the Present call"
 	);
+}
+
+dx3d::Rect dx3d::SwapChain::GetSize() const noexcept {
+	return _size;
 }
 
 void dx3d::SwapChain::ReloadBuffers() {

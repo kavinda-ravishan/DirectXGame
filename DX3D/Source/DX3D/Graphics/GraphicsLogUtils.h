@@ -12,12 +12,13 @@ namespace dx3d {
 			auto error_msg = error_blob ? static_cast<const char*>(error_blob->GetBufferPointer()) : nullptr;
 			
 			if (FAILED(hr)) {
-				if (error_msg) {
-					DX3DLogThrowUtil(logger, std::runtime_error, Logger::LogLevel::Error, error_msg, file, line);
-				}
-				else {
-					DX3DLogThrowUtil(logger, std::runtime_error, Logger::LogLevel::Error, "Shader compilation failed", file, line);
-				}
+				DX3DLogThrowUtil(
+					logger, 
+					std::runtime_error, 
+					Logger::LogLevel::Error, 
+					error_msg ? error_msg : "Shader compilation failed", 
+					file, line
+				);
 			}
 
 			if (error_msg) {

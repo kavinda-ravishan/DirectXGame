@@ -10,6 +10,7 @@ namespace dx3d {
 	private:
 		Microsoft::WRL::ComPtr<ID3D11VertexShader> _vs;
 		Microsoft::WRL::ComPtr<ID3D11PixelShader> _ps;
+		Microsoft::WRL::ComPtr<ID3D11InputLayout> _layout{};
 
 		friend class DeviceContext;
 	};

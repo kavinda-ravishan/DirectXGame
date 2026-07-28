@@ -51,6 +51,13 @@ namespace dx3d {
 		const ShaderBinary& ps;
 	};
 
+	struct VertexBufferDesc {
+		const void* vertex_list{};
+		ui32 vertex_list_size{}; // number of elements
+		ui32 vertex_size{}; // size of element in bytes
+	};
+
+
 	struct ShaderBinaryData {
 		const void* data{};
 		size_t data_size{};

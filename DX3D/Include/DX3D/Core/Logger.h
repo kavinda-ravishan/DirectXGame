@@ -27,11 +27,16 @@ namespace dx3d {
 
 } // namespace dx3d
 
-#define DX3DLog(logger, type, message)\
-	logger.Log((type), message, __FILE__, __LINE__)
+#define DX3DLogUtil(logger, type, message, file, line)\
+	logger.Log((type), message, file, line)
 
-#define DX3DLogThrow(logger, exception, type, message)\
-{\
-	DX3DLog(logger, type, message);\
+#define DX3DLog(logger, type, message)\
+	DX3DLogUtil(logger, (type), message, __FILE__, __LINE__)
+
+#define DX3DLogThrowUtil(logger, exception, type, message, file, line) {\
+	DX3DLogUtil(logger, type, message, file, line);\
 	throw exception(message);\
 }
+
+#define DX3DLogThrow(logger, exception, type, message)\
+	DX3DLogThrowUtil(logger, exception, type, message, __FILE__, __LINE__)

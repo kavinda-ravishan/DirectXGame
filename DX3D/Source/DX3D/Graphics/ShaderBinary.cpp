@@ -38,7 +38,7 @@ dx3d::ShaderBinary::ShaderBinary(const ShaderCompileDesc& desc, const GraphicsRe
 	);
 }
 
-dx3d::ShaderBinaryData dx3d::ShaderBinary::GetData() const noexcept
+dx3d::BinaryData dx3d::ShaderBinary::GetData() const noexcept
 {
 	return {
 		_blob->GetBufferPointer(), 

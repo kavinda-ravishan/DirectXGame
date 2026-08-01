@@ -47,7 +47,7 @@ namespace dx3d {
 	};
 
 	struct GraphicsPipelineStateDesc {
-		const ShaderBinary& vs;
+		const VertexShaderSignature& vs;
 		const ShaderBinary& ps;
 	};
 
@@ -57,8 +57,11 @@ namespace dx3d {
 		ui32 vertex_size{}; // size of element in bytes
 	};
 
+	struct VertexShaderSignatureDesc {
+		const ShaderBinaryPtr& vs_binary;
+	};
 
-	struct ShaderBinaryData {
+	struct BinaryData {
 		const void* data{};
 		size_t data_size{};
 	};
